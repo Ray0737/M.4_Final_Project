@@ -10,8 +10,7 @@ import calendar
 
 users = {"Ray": "010410","Jeanie":"220410"}
 subjects = ["Python 101", "Microcontroller", "Mathematics", "Physics for Engineering", "General Science", "English","Social Studies","Health Education","Physical Education","Art","Music","Thai"]
-teachers = ["Aj. Napasawan","Aj. Treethipnipha","Aj. Praphat","Aj. Tanapoom","Aj. Watchapol","Xu Laoshi","T. Nas","T. Colin"]
-people=["Ms. Rochaya","Ms. Pannapat","Ms. Warinporn","Ms. Pranisa","Ms. Pitchapa","Ms. Natthaporn","Mr. Supakorn","Mr. Sorawich"]
+teachers = ["Aj. Praphat","Aj. Tanapoom","T. Nas","Aj. Suwapat","T. Dan","Aj. Napasawan","Aj. Watchapol","T. Colin"]
 
 user_entry = None
 code_entry = None
@@ -142,8 +141,8 @@ class CalendarPopup(tk.Toplevel):
     def __init__(self, parent, target_entry):
         super().__init__(parent)
         self.title("Select a Date")
-        self.transient(parent)
-        self.grab_set()
+        self.transient(parent)  
+        self.grab_set() 
         self.target_entry = target_entry
 
         self.current_year = datetime.now().year
@@ -159,10 +158,17 @@ class CalendarPopup(tk.Toplevel):
         self.month_label = tk.Label(self.nav_frame, text="", width=15)
         self.month_label.pack(side=tk.LEFT, padx=10)
         tk.Button(self.nav_frame, text=">", command=self.next_month).pack(side=tk.LEFT)
+        
+        self.daily_list_frame = tk.LabelFrame(self, text="Tasks & Events for the Selected Date")
+        self.daily_list_frame.pack(padx=10, pady=10, fill="both", expand=True)
+
+        self.daily_list_label = tk.Label(self.daily_list_frame, text="Select a date to see tasks and events.", justify=tk.LEFT, wraplength=400)
+        self.daily_list_label.pack(padx=5, pady=5)
 
         self.show_calendar()
 
     def show_calendar(self):
+    
         for widget in self.calendar_frame.winfo_children():
             widget.destroy()
 
@@ -179,6 +185,32 @@ class CalendarPopup(tk.Toplevel):
                     day_button = tk.Button(self.calendar_frame, text=str(day),
                                            command=lambda d=day: self.select_date(d))
                     day_button.grid(row=row_idx + 1, column=col_idx, padx=2, pady=2)
+                    
+    def check_tasks_for_date(self, selected_date_str):
+        tasks_on_date = []
+        events_on_date = []
+
+        for item in tree.get_children():
+            task_data = tree.item(item, 'values')
+            if len(task_data) > 3 and task_data[3] == selected_date_str:
+                tasks_on_date.append(f"Task: {task_data[0]} ({task_data[1]})")
+
+        for item in event_tree.get_children():
+            event_data = event_tree.item(item, 'values')
+            if len(event_data) > 3 and event_data[3] == selected_date_str:
+                events_on_date.append(f"Event: {event_data[0]} ({event_data[1]})")
+
+        display_text = ""
+        if tasks_on_date or events_on_date:
+            if tasks_on_date:
+                display_text += "Tasks:\n" + "\n".join(tasks_on_date) + "\n\n"
+            if events_on_date:
+                display_text += "Events:\n" + "\n".join(events_on_date)
+        else:
+            display_text = "No tasks or events on this date."
+
+        self.daily_list_label.config(text=display_text)
+
 
     def prev_month(self):
         self.current_month -= 1
@@ -196,13 +228,16 @@ class CalendarPopup(tk.Toplevel):
 
     def select_date(self, day):
         selected_date = datetime(self.current_year, self.current_month, day)
+        selected_date_str = selected_date.strftime("%Y-%m-%d")
+        
         self.target_entry.delete(0, tk.END)
-        self.target_entry.insert(0, selected_date.strftime("%Y-%m-%d"))
-        self.destroy()
+        self.target_entry.insert(0, selected_date_str)
+        self.check_tasks_for_date(selected_date_str)
 
 
 def show_calendar_popup(target_entry):
     CalendarPopup(root, target_entry)
+
 
 ### LOG IN FUNCTION ###
 
@@ -312,7 +347,7 @@ def add_event():
         event_notes_entry.delete(0, tk.END)
         event_date_entry.delete(0, tk.END)
         event_status_var.set("Not Started")
-        event_associates_var.set("N/A")
+        event_associates_var.delete(0, tk.END)
     else:
         messagebox.showwarning("Input Error", "Event field cannot be empty.")
 
@@ -381,10 +416,11 @@ def main_window():
     myMenu = tk.Menu(root)
     root.config(menu=myMenu)
     file_menu = tk.Menu(myMenu, tearoff=0)
-    myMenu.add_cascade(label="File", menu=file_menu)
-    file_menu.add_command(label="Save", command=save_data_to_json)
-    file_menu.add_command(label="Exit", command=root.destroy)
+    myMenu.add_cascade(label="📁 File", menu=file_menu)
+    file_menu.add_command(label="💾 Save", command=save_data_to_json)
+    file_menu.add_command(label="✂️ Exit", command=root.destroy)
     
+
     input_frame = tk.Frame(root, padx=10, pady=10)
     input_frame.pack(fill="x")
     
@@ -435,9 +471,9 @@ def main_window():
     clock_label.grid(row=0, column=8,columnspan=2 , pady=10)
     update_clock(clock_label)
 
-    tk.Button( task_frame, text="Add Task", bg="#20942B", fg='#FFFFFF', command=add_task).grid(row=2, column=1, pady=10)
-    tk.Button( task_frame, text="Mark as Completed", bg="#0091FF", fg='#FFFFFF', command=mark_as_completed).grid(row=2, column=2, pady=10)
-    tk.Button( task_frame, text="Delete Task", bg='#FF5733', fg='#FFFFFF', command=delete_task).grid(row=2, column=3, pady=10)
+    tk.Button( task_frame, text="➕ Add Task", bg="#20942B", fg='#FFFFFF', command=add_task).grid(row=2, column=1, pady=10)
+    tk.Button( task_frame, text="✅ Mark as Completed", bg="#0091FF", fg='#FFFFFF', command=mark_as_completed).grid(row=2, column=2, pady=10)
+    tk.Button( task_frame, text="✂️ Delete Task", bg='#FF5733', fg='#FFFFFF', command=delete_task).grid(row=2, column=3, pady=10)
     
 ### TO DO LIST TREE VIEW DISPLAY ###
 
@@ -478,9 +514,8 @@ def main_window():
     tk.OptionMenu(event_frame, event_status_var , *event_status_options).grid(row=0, column=14, padx=5, pady=5)
     
     tk.Label(event_frame, text="Assosiciates:").grid(row=1, column=15, padx=5, pady=5, sticky="e")
-    event_associates_var = tk.StringVar(root)
-    event_associates_var.set("N/A")
-    tk.OptionMenu(event_frame, event_associates_var, *people).grid(row=1, column=16, padx=5, pady=5, sticky="w")
+    event_associates_var = tk.Entry(event_frame, width=15)
+    event_associates_var.grid(row=1, column=16, padx=5, pady=5, sticky="w")
 
     tk.Label(event_frame, text="Date:").grid(row=1, column=17, padx=5, pady=5, sticky="e")
     event_date_entry = tk.Entry(event_frame, width=15)
@@ -491,10 +526,11 @@ def main_window():
     event_notes_entry = tk.Entry(event_frame, width=60)
     event_notes_entry.grid(row=1, column=12,columnspan=3, padx=5, pady=5, sticky="ew")
 
-    tk.Button(event_frame, text="Add Event", bg="#20942B", fg='#FFFFFF', command=add_event).grid(row=2, column=12, pady=10)
-    tk.Button(event_frame, text="Event Finished", bg="#0091FF", fg='#FFFFFF', command=mark_event_completed).grid(row=2, column=13, pady=10)
-    tk.Button(event_frame, text="Delete Event", bg='#FF5733', fg='#FFFFFF', command=delete_event).grid(row=2, column=14, pady=10)
-    
+    tk.Button(event_frame, text="➕ Add Event", bg="#20942B", fg='#FFFFFF', command=add_event).grid(row=2, column=12, pady=10)
+    tk.Button(event_frame, text="✅ Event Finished", bg="#0091FF", fg='#FFFFFF', command=mark_event_completed).grid(row=2, column=13, pady=10)
+    tk.Button(event_frame, text="✂️ Delete Event", bg='#FF5733', fg='#FFFFFF', command=delete_event).grid(row=2, column=14, pady=10)
+    tk.Button(event_frame, text="📅 Show Calendar", bg="#DA9500", fg='#FFFFFF', command=lambda: show_calendar_popup(event_date_entry)).grid(row=2, column=16, pady=10)
+
 ### EVENT LIST TREE VIEW DISPLAY ###
 
     event_table_frame = tk.Frame(root)
@@ -520,7 +556,7 @@ def main_window():
     load_data_from_json()
     
     root.mainloop()
-    
+
 ### CODE TRIGGER ###
 
 running = input("Start the program (y/n): ").strip().lower()
