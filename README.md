@@ -6,7 +6,7 @@ A Planner application designed for student usage inspired by the application “
 This application is made for the purpose of assisting people who can't remember tasks, schedules, or events or keep messing it up.
 Our main target audience is students with high work loads.
 
-##Example Situation: 
+Example Situation: 
 
 Aj. Praphat assigned AI room to code 10 programs due on Sunday 0800 and Aj. Tanapoom assigned AI room to build a working car due on Friday 2000 and Aj. Nattaporn assigned Ai room to code a program to simulated projectile motion with air resistance accounted.
 At this point everyone probably lost track of work and end up getting past due assignments.
