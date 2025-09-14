@@ -4,7 +4,7 @@ A Planner application designed for student usage inspired by the application “
 ## Purpose:
 
 This application is made for the purpose of assisting people who can't remember tasks, schedules, or events or keep messing it up.
-Our main target audience is students with high work loads.
+Since most people when they get assigned a task they wwill just remember the task in their head. However in the end of the day, they eventually ended up forgetting about it.
 
 Example Situation: 
 
