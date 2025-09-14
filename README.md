@@ -1,6 +1,7 @@
-# GUI To do list
+# My Notion
 
 Final Project for SPSM M.4 AI 07 | Subject: Basic Python Programming
+Graphical User Interface Coded in Python using Tkinter Module | Total Lines: 568 
 
 My Notion
 
