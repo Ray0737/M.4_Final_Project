@@ -4,7 +4,7 @@ A Planner application designed for student usage inspired by the application “
 ## Purpose:
 
 This application is made for the purpose of assisting people who can't remember tasks, schedules, or events or keep messing it up.
-Since most people when they get assigned a task they wwill just remember the task in their head. However in the end of the day, they eventually ended up forgetting about it.
+Since most people when they get assigned a task they will just remember the task in their head. However in the end of the day, they eventually ended up forgetting about it.
 
 Example Situation: 
 
@@ -21,3 +21,9 @@ A Graphical User Interface (GUI) coded in Python using Tkinter module. The progr
 Both task and event memo are able to add details such as: Notes, Dates, Priority, Associates, Subject, and Current Progress. All data are display in a tree view panel. 
 While working 
 The program can also save the data that each individual had keyed in by using the JSON and OS module.
+
+## Further Improvements:
+
+1. The user interface can look better for certain but we're limited with our knowledge at the moment.
+2. Add the function for the user to be able to choose where to save the data in your File Explorer.
+3. Add the alarm function for the user. For example every hour let the system alert the user and ask them if they had finished their task or not. 
