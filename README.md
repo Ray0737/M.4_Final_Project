@@ -26,3 +26,6 @@ While working. The program can also save the data that each individual had keyed
 1. The user interface can look better for certain but we're limited with our knowledge at the moment.
 2. Add the function for the user to be able to choose where to save the data in your File Explorer.
 3. Add the alarm clock function for the user. For example every hour or 30 minutes let the system alert the user and ask them if they had finished their task or not. 
+
+## NOTED:
+Username for testing: "Ray" | Password for testing: "010410"
