@@ -11,9 +11,9 @@ Current Version: 1.0.0
 ## Improvements:
 
 1. Interface improvement for more user experience
-2. Browsing for data saver location
-3. Able to set alarm clock
-4. CPM - PERT
+2. Registeration system for non preset accounts
+3. Alarm settings
+4. CPM - PERT Systems
 5. Human Resource Management (Assigning work)
 
 ## NOTED:
