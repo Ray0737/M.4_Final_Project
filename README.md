@@ -1,31 +1,19 @@
 # My Notion
-A Planner application designed for student usage inspired by the application “Notion”
 
-## Purpose:
+## Introduction:
 
-This application is made for the purpose of assisting people who can't remember tasks, schedules, or events or keep messing it up.
-Since most people when they get assigned a task they will just remember the task in their head. However in the end of the day, they eventually ended up forgetting about it.
+A Graphical User Interface (GUI) created as a task and event scheduling written by Python using mainly Tkinter module following by JSON and OS module. The program is primary designed for student's usage. The program is able to input both task and event, prioritize it, add details for memorization, and save data to local device in a JSON file.  
+Current Version: 1.0.0 
 
-Example Situation: 
+![Interface Picture](Interface.png)
 
-Aj. Praphat assigned AI room to code 10 programs due on Sunday 0800 and Aj. Tanapoom assigned AI room to build a working car due on Friday 2000 and Aj. Nattaporn assigned Ai room to code a program to simulated projectile motion with air resistance accounted.
-At this point everyone probably lost track of work and end up getting past due assignments.
+## Improvements:
 
-## Benefits:
-
-All of your task will be oriented and you will have less chances of missing out works or events. You will have better time management thus you can find time to go hangouts with your friends more easily too.
-
-## Features:
-
-A Graphical User Interface (GUI) coded in Python using Tkinter module. The program featured a task and event memo. 
-Both task and event memo are able to add details such as: Notes, Dates, Priority, Associates, Subject, and Current Progress. All data are display in a tree view panel. 
-While working. The program can also save the data that each individual had keyed in by using the JSON and OS module. 
-
-## Further Improvements:
-
-1. The user interface can look better for certain but we're limited with our knowledge at the moment.
-2. Add the function for the user to be able to choose where to save the data in your File Explorer.
-3. Add the alarm clock function for the user. For example every hour or 30 minutes let the system alert the user and ask them if they had finished their task or not. 
+1. Interface improvement for more user experience
+2. Browsing for data saver location
+3. Able to set alarm clock
+4. CPM - PERT
+5. Human Resource Management (Assigning work)
 
 ## NOTED:
-Username for testing: "Ray" | Password for testing: "010410"
+For Editing | Username: Test_user / Password: 0123
