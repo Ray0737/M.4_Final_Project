@@ -1,4 +1,4 @@
-# My Notion
+# "My Notion" Planner
 
 ## Introduction:
 
