@@ -8,7 +8,7 @@ import json
 import os 
 import calendar
 
-users = {"Ray": "010410","Pair":"270809"}
+users = {"Test_user": "0123"}
 subjects = ["Python 101", "Microcontroller", "Mathematics", "Physics for Engineering", "General Science", "English","Social Studies","Health Education","Physical Education","Art","Music","Thai"]
 teachers = ["Aj. Praphat","Aj. Tanapoom","T. Nas","Aj. Suwapat","T. Dan","Aj. Napasawan","Aj. Watchapol","T. Colin"]
 
@@ -562,5 +562,6 @@ def main_window():
 running = input("Start the program (y/n): ").strip().lower()
 if running == "y":
     display_login_window()
+
 
 
