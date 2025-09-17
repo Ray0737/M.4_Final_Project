@@ -1,5 +1,6 @@
 # My Notion
 A Planner application designed for student usage inspired by the application “Notion”
+(Final Project for M.4 Semester 0 Artificial Intelligence Major)
 
 ## Purpose:
 
