@@ -10,7 +10,7 @@ Current Version: 1.0.0
 
 ## Improvements:
 
-1. Interface improvement for more user experience
+1. Interface improvement for better user experience
 2. Registeration system for non preset accounts
 3. Alarm settings
 4. CPM - PERT Systems
