@@ -35,18 +35,18 @@ current_user = None
 
 ### JSON FILE SYSTEM ###
 
-def get_data_file_path(username):
+def get_data_file_path(username): # Setting up name for the file
     return f"{username}_tasks_events.json"
 
 def save_data_to_json():
     global current_user, tree, event_tree
     
-    if not current_user:
+    if not current_user: # Verifying user is in the preset
         messagebox.showerror("Error", "No user logged in to save data.")
         return
     
-    tasks = []
-    for item in tree.get_children():
+    tasks = [] #Store task value in a dict which is a subset of a list
+    for item in tree.get_children(): 
         task_data = tree.item(item, 'values')
         if len(task_data) >= 7:
             tasks.append({
@@ -59,7 +59,7 @@ def save_data_to_json():
                 "priority": task_data[6]
             })
     
-    events = []
+    events = [] #Store event value in a dict which is a subset of a list
     for item in event_tree.get_children():
         event_data = event_tree.item(item, 'values')
         if len(event_data) >= 5:
@@ -76,7 +76,7 @@ def save_data_to_json():
         "events": events
     }
     
-    file_path = get_data_file_path(current_user)
+    file_path = get_data_file_path(current_user) #Save the data and format it so people can also read the data that was stored
     try:
         with open(file_path, 'w') as f:
             json.dump(data_to_save, f, indent=4)
@@ -84,23 +84,23 @@ def save_data_to_json():
     except Exception as e:
         messagebox.showerror("Error", f"Failed to save data: {e}")
 
-def load_data_from_json():
+def load_data_from_json(): 
     global current_user, tree, event_tree
     
-    if not current_user:
+    if not current_user: # Check if the user exist
         return
         
-    file_path = get_data_file_path(current_user)
+    file_path = get_data_file_path(current_user) 
     if not os.path.exists(file_path):
         print(f"No data file found for {current_user}, starting with empty lists.")
         return
         
     try:
-        with open(file_path, 'r') as f:
+        with open(file_path, 'r') as f: # Read data from file
             data = json.load(f)
             
-        tree.delete(*tree.get_children())
-        event_tree.delete(*event_tree.get_children())
+        tree.delete(*tree.get_children()) 
+        event_tree.delete(*event_tree.get_children()) # Clear out if there's any data stuck in the tree view table
         
         if "tasks" in data:
             for task in data["tasks"]:
@@ -119,7 +119,7 @@ def load_data_from_json():
                     task.get("notes", ""),
                     task.get("by", ""),
                     task.get("priority", "")
-                ), tags=tags)
+                ), tags=tags) # insert each value from the dict
         
         if "events" in data:
             for event in data["events"]:
@@ -129,7 +129,7 @@ def load_data_from_json():
                     event.get("associates", ""),
                     event.get("date", ""),
                     event.get("notes", "")
-                ))
+                )) # insert each value from the dict
                 
         print(f"Data loaded successfully for {current_user}.")
     except Exception as e:
@@ -562,4 +562,5 @@ def main_window():
 running = input("Start the program (y/n): ").strip().lower()
 if running == "y":
     display_login_window()
+
 
