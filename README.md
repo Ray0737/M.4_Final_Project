@@ -2,7 +2,7 @@
 
 ## Introduction:
 
-A Graphical User Interface (GUI) created as a task and event scheduling written by Python using mainly Tkinter module following by JSON and OS module. The program is primary designed for student's usage. The program is able to input both task and event, prioritize it, add details for memorization, and save data to local device in a JSON file.  
+A Graphical User Interface (GUI) created as a task and event scheduling written by Python using mainly Tkinter module following by JSON and OS module. The program is able to input both task and event, prioritize it, add details for memorization, and save data to local device in a JSON file.  
 Current Version: 1.0.0 
 
 ![Interface Picture](Interface.png)
