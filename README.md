@@ -1,6 +1,5 @@
 # My Notion
 A Planner application designed for student usage inspired by the application “Notion”
-(Final Project for M.4 Semester 0 Artificial Intelligence Major)
 
 ## Purpose:
 
@@ -14,14 +13,13 @@ At this point everyone probably lost track of work and end up getting past due a
 
 ## Benefits:
 
-All of your task will be oriented and you will have less chances of missing out works. You will have better time management thus you can find time to go hangouts with your friends more easily.
+All of your task will be oriented and you will have less chances of missing out works or events. You will have better time management thus you can find time to go hangouts with your friends more easily too.
 
 ## Features:
 
 A Graphical User Interface (GUI) coded in Python using Tkinter module. The program featured a task and event memo. 
 Both task and event memo are able to add details such as: Notes, Dates, Priority, Associates, Subject, and Current Progress. All data are display in a tree view panel. 
-While working 
-The program can also save the data that each individual had keyed in by using the JSON and OS module.
+While working. The program can also save the data that each individual had keyed in by using the JSON and OS module. 
 
 ## Further Improvements:
 
