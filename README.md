@@ -11,7 +11,7 @@ Current Version: 1.0.0
 ## Improvements:
 
 1. Interface improvement for better user experience
-2. Registeration system for non preset accounts
+2. Registration system for non preset accounts
 3. Alarm settings
 4. CPM - PERT Systems
 5. Human Resource Management (Assigning work)
